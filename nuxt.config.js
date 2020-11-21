@@ -1,8 +1,9 @@
 export default {
   ssr: false,
   target: 'static',
+  components: true,
   head: {
-    title: 'paper-science',
+    title: 'Paper',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -16,7 +17,6 @@ export default {
   ],
   plugins: [
   ],
-  components: true,
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss'
@@ -25,5 +25,20 @@ export default {
     '@nuxtjs/pwa'
   ],
   build: {
+  },
+  generate: {
+    fallback: true
+  },
+  pwa: {
+    meta: {
+      viewport: 'width=device-width, initial-scale=1',
+      theme_color: '#047857',
+      mobileAppIOS: true
+    },
+    manifest: {
+      background_color: '#F3F4F6',
+      display: 'standalone',
+      theme_color: '#047857'
+    }
   }
 }
