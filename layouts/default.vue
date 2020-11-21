@@ -1,62 +1,25 @@
 <template>
-  <div>
-    <Nuxt />
+  <div class="min-h-screen w-screen m-auto flex flex-col sm:w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3">
+    <main class="flex-grow">
+      <nuxt />
+    </main>
+    <footer class="mb-4 text-sm text-center text-gray-500 italic">
+      <nuxt-link to="/contact">
+        Made with ♥ in Utrecht
+      </nuxt-link>
+    </footer>
   </div>
 </template>
 
-<style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<script>
+export default {
+  head: {
+    titleTemplate (titleChunk) {
+      return (titleChunk && titleChunk !== 'Paper') ? `Paper | ${titleChunk}` : 'Paper'
+    },
+    bodyAttrs: {
+      class: 'bg-gray-100 dark:bg-gray-800'
+    }
+  }
 }
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-</style>
+</script>
