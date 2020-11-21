@@ -2,6 +2,9 @@ export default {
   ssr: false,
   target: 'static',
   components: true,
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL
+  },
   head: {
     title: 'Paper',
     meta: [

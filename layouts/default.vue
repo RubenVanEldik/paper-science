@@ -1,14 +1,7 @@
 <template>
-  <div class="min-h-screen w-screen m-auto flex flex-col sm:w-11/12 md:w-4/5 lg:w-3/4 xl:w-2/3">
-    <main class="flex-grow">
-      <nuxt />
-    </main>
-    <footer class="mb-4 text-sm text-center text-gray-500 italic">
-      <nuxt-link to="/contact">
-        Made with ♥ in Utrecht
-      </nuxt-link>
-    </footer>
-  </div>
+  <main class="min-h-screen w-screen m-auto">
+    <nuxt />
+  </main>
 </template>
 
 <script>
