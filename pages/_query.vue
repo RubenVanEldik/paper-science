@@ -38,7 +38,7 @@
       />
       <metadata-item
         label="Published"
-        :value="metadata.published || metadata.year"
+        :value="metadata.published ? beautifyDate(metadata.published) : metadata.year"
       />
       <metadata-item
         :label="metadata.author.length === 1 ? 'Author' : 'Authors'"
@@ -61,6 +61,8 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 export default {
   data () {
     return {
@@ -93,6 +95,11 @@ export default {
         }
         this.loading = false
       }
+    }
+  },
+  methods: {
+    beautifyDate (dateString) {
+      return dateString ? dayjs(dateString).format('D MMMM YYYY') : null
     }
   },
   head () {
