@@ -35,12 +35,14 @@ export default {
   },
   pwa: {
     meta: {
-      name: 'paper',
+      name: 'Paper',
       viewport: 'width=device-width, initial-scale=1',
       theme_color: '#047857',
       mobileAppIOS: true
     },
     manifest: {
+      name: 'Paper',
+      short_name: 'Paper',
       background_color: '#F3F4F6',
       display: 'standalone',
       theme_color: '#047857'
