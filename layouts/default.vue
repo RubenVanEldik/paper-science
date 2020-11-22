@@ -8,7 +8,7 @@
 export default {
   head: {
     titleTemplate (titleChunk) {
-      return (titleChunk && titleChunk !== 'Paper') ? `Paper | ${titleChunk}` : 'Paper'
+      return (titleChunk && titleChunk !== 'Paper') ? `${titleChunk} | Paper` : 'Paper'
     },
     bodyAttrs: {
       class: 'bg-gray-100 dark:bg-gray-800'
