@@ -17,26 +17,24 @@
       </svg>
     </div>
     <form
-      class="flex max-w-full px-3"
+      class="flex w-full max-w-md md:max-w-lg px-3"
       @submit.prevent="search"
     >
       <input
         v-model="query"
         type="search"
         placeholder="Enter a DOI, URL, or title"
-        class="w-96 max-w-full h-10 rounded-l px-5"
+        class="w-full h-10 appearance-none rounded-none rounded-l px-5"
       >
-      <div>
-        <button
-          class="bg-green-600 text-white h-10 rounded-r px-5 leading-10 m-0"
-          @click="search"
-        >
-          Find
-        </button>
-      </div>
+      <button
+        class="appearance-none bg-green-600 text-white h-10 rounded-r px-5 leading-10 m-0"
+        @click="search"
+      >
+        Find
+      </button>
     </form>
     <button
-      class="mt-2 mb-32 text-sm text-gray-700"
+      class="mt-3 mb-32 text-sm text-gray-700"
       @click="randomArticle"
     >
       Gimme a random article
