@@ -1,6 +1,10 @@
 <template>
+  <nuxt-child
+    v-if="$route.name === 'query-pdf'"
+    :url="url"
+  />
   <div
-    v-if="loading || notFound"
+    v-else-if="loading || notFound"
     class="h-screen flex justify-center items-center text-gray-700"
   >
     <div v-if="loading">
@@ -10,55 +14,66 @@
       Could not find the article
     </div>
   </div>
-  <div v-else class="flex flex-col sm:flex-row">
-    <div class="h-screen w-full sm:w-1/2 p-4 sm:p-5 overflow-auto">
-      <h1
-        class="mb-6 text-3xl text-green-600 font-bold"
-        v-text="metadata.title"
-      />
-      <metadata-item
-        label="DOI"
-        :value="metadata.doi"
-      />
-      <metadata-item
-        label="Journal"
-        :value="metadata.journal"
-      />
-      <metadata-item
-        label="Volume"
-        :value="metadata.volume"
-      />
-      <metadata-item
-        label="Issue"
-        :value="metadata.issue"
-      />
-      <metadata-item
-        label="Page"
-        :value="metadata.page"
-      />
-      <metadata-item
-        label="Published"
-        :value="metadata.published ? beautifyDate(metadata.published) : metadata.year"
-      />
-      <metadata-item
-        :label="metadata.author.length === 1 ? 'Author' : 'Authors'"
-        :value="metadata.author.map(({ name, fullName, given, family }) => name || fullName || `${given || ''} ${family || ''}`).join(', ')"
-      />
-      <metadata-item
-        label="Abstract"
-        :value="metadata.abstract"
-        multi-line
+  <div
+    v-else
+    class="flex"
+  >
+    <div class="flex flex-col h-screen w-full md:w-1/2 p-4 sm:p-5 overflow-auto">
+      <div class="flex-grow mb-4">
+        <h1
+          class="mb-6 text-3xl text-green-600 font-bold"
+          v-text="metadata.title"
+        />
+        <metadata-item
+          label="DOI"
+          :value="metadata.doi"
+        />
+        <metadata-item
+          label="Journal"
+          :value="metadata.journal"
+        />
+        <metadata-item
+          label="Volume"
+          :value="metadata.volume"
+        />
+        <metadata-item
+          label="Issue"
+          :value="metadata.issue"
+        />
+        <metadata-item
+          label="Page"
+          :value="metadata.page"
+        />
+        <metadata-item
+          label="Published"
+          :value="metadata.published ? beautifyDate(metadata.published) : metadata.year"
+        />
+        <metadata-item
+          :label="metadata.author.length === 1 ? 'Author' : 'Authors'"
+          :value="metadata.author.map(({ name, fullName, given, family }) => name || fullName || `${given || ''} ${family || ''}`).join(', ')"
+        />
+        <metadata-item
+          label="Abstract"
+          :value="metadata.abstract"
+          multi-line
+        />
+      </div>
+      <button
+        :disabled="!url"
+        :class="{ 'opacity-50': !url }"
+        class="block w-full mt-3 py-2 px-4 md:hidden rounded bg-green-600 text-white text-center"
+        @click="() => $router.push(`${$route.path}/pdf`)"
+        v-text="url ? 'Open PDF' : pdfNotFound ? 'There is no PDF for this article' : 'Searching for PDF'"
       />
     </div>
-    <div class="w-full sm:w-1/2">
+    <div class="hidden md:block w-1/2">
       <iframe
-        v-if="url"
         :src="url"
-        frameborder="0"
         class="w-full h-screen bg-gray-200"
+        no-referrer
       />
       <div
-        v-else-if="pdfNotFound"
+        v-if="pdfNotFound"
         class="flex justify-center items-center w-full h-full"
       >
         <div>
