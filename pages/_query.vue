@@ -52,10 +52,19 @@
     </div>
     <div class="w-full sm:w-1/2">
       <iframe
+        v-if="url"
         :src="url"
         frameborder="0"
         class="w-full h-screen bg-gray-200"
       />
+      <div
+        v-else-if="pdfNotFound"
+        class="flex justify-center items-center w-full h-full"
+      >
+        <div>
+          Sorry, could not find the PDF 😕
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -68,6 +77,7 @@ export default {
     return {
       loading: true,
       notFound: false,
+      pdfNotFound: false,
       metadata: null,
       url: null
     }
@@ -89,6 +99,25 @@ export default {
 
           if (json.url?.endsWith('.pdf')) {
             this.url = json.url
+          } else {
+            fetch(`${this.$config.NETLIFY_URL || ''}/.netlify/functions/fetchurl?query=${json.metadata.doi}`)
+              .then((response) => {
+                if (response.status !== 200) {
+                  throw new Error('Status code not 200')
+                }
+                return response
+              })
+              .then(async response => await response.text())
+              .then((url) => {
+                if (url) {
+                  this.url = url
+                } else {
+                  this.pdfNotFound = true
+                }
+              })
+              .catch(() => {
+                this.pdfNotFound = true
+              })
           }
         } else {
           this.notFound = true

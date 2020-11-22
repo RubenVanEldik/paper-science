@@ -3,6 +3,7 @@ export default {
   target: 'static',
   components: true,
   publicRuntimeConfig: {
+    NETLIFY_URL: process.env.NETLIFY_URL,
     API_URL: process.env.API_URL
   },
   head: {
