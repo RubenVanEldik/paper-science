@@ -1,19 +1,9 @@
 <template>
-  <iframe
-    :src="url"
-    class="fixed top-0 left-0 w-screen h-screen bg-gray-200"
-    no-referrer
-  />
+  <pdf v-bind="$attrs" />
 </template>
 
 <script>
 export default {
-  props: {
-    url: {
-      type: String,
-      required: false,
-      default: null
-    }
-  }
+  inheritAttrs: false
 }
 </script>

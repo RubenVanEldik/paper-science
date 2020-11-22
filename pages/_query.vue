@@ -67,11 +67,7 @@
       />
     </div>
     <div class="hidden md:block w-1/2">
-      <iframe
-        :src="url"
-        class="w-full h-screen bg-gray-200"
-        no-referrer
-      />
+      <pdf :url="url" />
       <div
         v-if="pdfNotFound"
         class="flex justify-center items-center w-full h-full"
