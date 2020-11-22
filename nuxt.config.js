@@ -34,6 +34,7 @@ export default {
   },
   pwa: {
     meta: {
+      name: 'paper',
       viewport: 'width=device-width, initial-scale=1',
       theme_color: '#047857',
       mobileAppIOS: true
