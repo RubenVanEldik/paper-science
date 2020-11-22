@@ -5,9 +5,13 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "build:client": "nuxt build",
+    "build:functions": "netlify-lambda build functions",
+    "build": "npm run build:client && npm run build:functions",
     "start": "nuxt start",
+    "start:server": "netlify-lambda serve functions",
     "generate": "nuxt generate",
+    "postinstall": "netlify-lambda install",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
