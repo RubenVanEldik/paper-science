@@ -19,6 +19,7 @@ export default {
   css: [
   ],
   plugins: [
+    { src: '~/plugins/simpleAnalytics' }
   ],
   buildModules: [
     '@nuxtjs/eslint-module',
