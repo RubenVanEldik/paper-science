@@ -11,7 +11,7 @@
         v-model="query"
         type="search"
         placeholder="Enter a DOI, URL, or title"
-        class="w-full h-10 appearance-none rounded-none rounded-l px-5"
+        class="w-full h-10 appearance-none rounded-none rounded-l px-5 text-gray-800"
       >
       <button
         class="appearance-none bg-green-600 text-white h-10 rounded-r px-5 leading-10 m-0"
@@ -21,7 +21,7 @@
       </button>
     </form>
     <button
-      class="mt-3 mb-32 text-sm text-gray-700"
+      class="mt-4 mb-32 text-sm text-gray-700"
       @click="randomArticle"
     >
       Gimme a random article
