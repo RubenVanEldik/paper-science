@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen flex flex-col justify-center items-center">
+  <div class="h-full flex flex-col justify-center items-center">
     <div class="text-green-600 mb-28">
       <icon class="h-12 sm:h-16" />
     </div>

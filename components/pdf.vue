@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center items-center w-full h-screen bg-gray-200 text-green-600">
+  <div class="flex justify-center items-center h-full w-full bg-gray-200 text-green-600">
     <icon
       v-if="!url"
       class="h-12 animate-bounce"

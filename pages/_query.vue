@@ -5,7 +5,7 @@
   />
   <div
     v-else-if="loading || notFound"
-    class="h-screen flex justify-center items-center text-gray-700"
+    class="h-full flex justify-center items-center text-gray-700"
   >
     <div v-if="loading">
       <div>Loading article</div>
@@ -16,9 +16,9 @@
   </div>
   <div
     v-else
-    class="flex"
+    class="flex h-full"
   >
-    <div class="flex flex-col h-screen w-full md:w-1/2 p-4 sm:p-5 overflow-auto">
+    <div class="flex flex-col h-full w-full md:w-1/2 p-4 sm:p-5 overflow-auto">
       <div class="flex-grow mb-4">
         <h1
           class="mb-6 text-3xl text-green-600 font-bold"
