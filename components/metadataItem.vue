@@ -4,12 +4,12 @@
     class="mt-3"
     :class="{ flex: !multiLine }"
   >
-    <div
-      class="mr-3 text-green-600 font-semibold"
+    <strong
+      class="block mr-3 text-green-600 font-semibold"
       v-text="label"
     />
     <div
-      class=""
+      class="text-gray-700"
       v-text="value"
     />
   </div>
