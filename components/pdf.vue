@@ -7,7 +7,7 @@
     <iframe
       v-else
       :src="url"
-      class="w-full h-full"
+      class="w-full h-full overflow-auto"
       no-referrer
     />
   </div>
