@@ -10,7 +10,6 @@
     "build": "npm run build:frontend && npm run build:functions",
     "start": "netlify-lambda serve functions",
     "generate": "nuxt generate && npm run build:functions",
-    "postinstall": "netlify-lambda install",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
