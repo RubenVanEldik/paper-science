@@ -2,6 +2,7 @@
   <nuxt-child
     v-if="$route.name === 'query-pdf'"
     :url="url"
+    :error="pdfNotFound"
   />
   <div
     v-else-if="loading || notFound"
@@ -67,15 +68,10 @@
       />
     </div>
     <div class="hidden md:block w-1/2">
-      <pdf :url="url" />
-      <div
-        v-if="pdfNotFound"
-        class="flex justify-center items-center w-full h-full"
-      >
-        <div>
-          Sorry, could not find the PDF 😕
-        </div>
-      </div>
+      <pdf
+        :url="url"
+        :error="pdfNotFound"
+      />
     </div>
   </div>
 </template>
@@ -101,45 +97,43 @@ export default {
   watch: {
     query: {
       immediate: true,
-      async handler (newQuery) {
-        const response = await fetch(`${this.$config.API_URL}/find?id=${newQuery}`)
-        const json = await response.json()
-
-        if (json.metadata.doi) {
-          this.metadata = json.metadata
-
-          if (json.url?.endsWith('.pdf')) {
-            this.url = json.url
-          } else {
-            fetch(`${this.$config.NETLIFY_URL || ''}/.netlify/functions/fetchurl?query=${json.metadata.doi}`)
-              .then((response) => {
-                if (response.status !== 200) {
-                  throw new Error('Status code not 200')
-                }
-                return response
-              })
-              .then(async response => await response.text())
-              .then((url) => {
-                if (url) {
-                  this.url = url
-                } else {
-                  this.pdfNotFound = true
-                }
-              })
-              .catch(() => {
-                this.pdfNotFound = true
-              })
-          }
-        } else {
-          this.notFound = true
-        }
-        this.loading = false
-      }
+      handler: 'fetchMetadata'
     }
   },
   methods: {
     beautifyDate (dateString) {
       return dateString ? dayjs(dateString).format('D MMMM YYYY') : null
+    },
+    async fetchMetadata (query) {
+      const response = await fetch(`${this.$config.API_URL}/find?id=${query}`)
+      const json = await response.json()
+
+      if (json.metadata.doi) {
+        this.metadata = json.metadata
+
+        if (json.url?.endsWith('.pdf')) {
+          this.url = json.url
+        } else {
+          this.fetchUrl(json.metadata.doi)
+        }
+      } else {
+        this.notFound = true
+      }
+      this.loading = false
+    },
+    async fetchUrl (doi) {
+      try {
+        const response = await fetch(`${this.$config.NETLIFY_URL || ''}/.netlify/functions/fetchurl?query=${doi}`)
+        const url = await response.text()
+
+        if (response.status === 200 && url) {
+          this.url = url
+        } else {
+          this.pdfNotFound = true
+        }
+      } catch (err) {
+        this.pdfNotFound = true
+      }
     }
   },
   head () {
