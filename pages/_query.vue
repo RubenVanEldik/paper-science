@@ -125,7 +125,7 @@ export default {
     },
     async fetchUrl (doi) {
       try {
-        const response = await fetch(`${this.$config.NETLIFY_URL || ''}/.netlify/functions/fetchurl?query=${doi}`)
+        const response = await fetch(`${this.$config.NETLIFY_URL || ''}/fetchurl?query=${doi}`)
         const url = await response.text()
 
         if (response.status === 200 && url) {
