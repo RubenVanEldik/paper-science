@@ -1,4 +1,14 @@
 [build]
   command = "npm run generate"
-  functions = "dist/functions"
   publish = "dist"
+  functions = "dist/functions"
+
+[[redirects]]
+  from = "/fetchurl"
+  to = "/.netlify/functions/fetchurl"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
