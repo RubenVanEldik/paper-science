@@ -9,7 +9,7 @@
     class="h-full flex justify-center items-center text-gray-700"
   >
     <div v-if="loading">
-      <div>Loading article</div>
+      Loading article
     </div>
     <div v-else-if="notFound">
       Could not find the article
@@ -20,7 +20,7 @@
     class="flex h-full"
   >
     <div class="flex flex-col h-full w-full md:w-1/2 p-4 sm:p-5 overflow-auto">
-      <div class="flex-grow mb-4">
+      <div class="flex-grow pb-7">
         <h1
           class="mb-6 text-3xl text-green-600 font-bold"
           v-text="metadata.title"
@@ -59,13 +59,15 @@
           multi-line
         />
       </div>
-      <button
-        :disabled="!url"
-        :class="{ 'opacity-50': !url }"
-        class="block w-full h-10 mt-3 py-2 px-4 md:hidden rounded bg-green-600 text-white text-center"
-        @click="() => $router.push(`${$route.path}/pdf`)"
-        v-text="url ? 'Open PDF' : pdfNotFound ? 'There is no PDF for this article' : 'Searching for PDF'"
-      />
+      <div class="h-10">
+        <button
+          :disabled="!url"
+          :class="{ 'opacity-50': !url }"
+          class="block w-full py-2 px-4 md:hidden rounded bg-green-600 text-white text-center"
+          @click="() => $router.push(`${$route.path}/pdf`)"
+          v-text="url ? 'Open PDF' : pdfNotFound ? 'There is no PDF for this article' : 'Searching for PDF'"
+        />
+      </div>
     </div>
     <div class="hidden md:block w-1/2">
       <pdf
