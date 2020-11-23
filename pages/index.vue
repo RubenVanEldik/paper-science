@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen flex flex-col justify-center items-center">
     <div class="text-green-600 mb-28">
-      <icon class="h-16" />
+      <icon class="h-12 sm:h-16" />
     </div>
     <form
       class="flex w-full max-w-md md:max-w-lg px-3"
