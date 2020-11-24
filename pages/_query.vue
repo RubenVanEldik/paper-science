@@ -113,11 +113,13 @@ export default {
       const response = await fetch(`${this.$config.API_URL}/find?id=${query}`)
       const json = await response.json()
 
-      if (json.metadata.doi) {
+      if (json.metadata?.doi) {
         this.metadata = json.metadata
 
-        if (json.url?.endsWith('.pdf')) {
-          this.url = json.url
+        const pdfUrl = [json.url, ...json.metadata.url].find(url => url.endsWith('.pdf'))
+
+        if (pdfUrl) {
+          this.url = pdfUrl
         } else {
           this.fetchUrl(json.metadata.doi)
         }
