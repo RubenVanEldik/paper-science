@@ -1,5 +1,6 @@
 {
   "name": "paper-science",
+  "description": "Find any scientific paper.",
   "author": "Ruben van Eldik",
   "version": "1.0.0",
   "private": true,
