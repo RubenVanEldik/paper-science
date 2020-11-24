@@ -51,8 +51,7 @@
       <div class="h-10">
         <button
           :disabled="!url"
-          :class="{ 'opacity-50': !url }"
-          class="block w-full py-2 px-4 md:hidden rounded bg-green-600 text-white text-center"
+          class="block w-full py-2 px-4 md:hidden rounded bg-green-600 text-white text-center disabled:opacity-50"
           @click="() => $router.push(`${$route.path}/pdf`)"
           v-text="url ? 'Open PDF' : pdfNotFound ? 'There is no PDF for this article' : 'Searching for PDF'"
         />
