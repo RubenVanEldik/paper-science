@@ -23,7 +23,7 @@
       <div class="flex-grow pb-7">
         <h1
           class="mb-6 text-3xl text-green-600 font-bold"
-          v-text="metadata.title"
+          v-text="beautifiedTitle"
         />
         <metadata-item
           label="DOI"
@@ -94,6 +94,9 @@ export default {
   computed: {
     query () {
       return this.$route.params.query
+    },
+    beautifiedTitle () {
+      return this.metadata.title?.match(/^"?(.+?)\.?"?$/)?.[1]
     }
   },
   watch: {
