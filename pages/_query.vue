@@ -5,18 +5,7 @@
     :error="pdfNotFound"
   />
   <div
-    v-else-if="loading || notFound"
-    class="h-full flex justify-center items-center text-gray-700"
-  >
-    <div v-if="loading">
-      Loading article
-    </div>
-    <div v-else-if="notFound">
-      Could not find the article
-    </div>
-  </div>
-  <div
-    v-else
+    v-else-if="metadata"
     class="flex h-full"
   >
     <div class="flex flex-col h-full w-full md:w-1/2 p-4 sm:p-5 overflow-auto">
@@ -74,6 +63,17 @@
         :url="url"
         :error="pdfNotFound"
       />
+    </div>
+  </div>
+  <div
+    v-else
+    class="h-full flex justify-center items-center text-gray-700"
+  >
+    <div v-if="loading">
+      Loading article
+    </div>
+    <div v-else-if="notFound">
+      Could not find the article
     </div>
   </div>
 </template>
