@@ -7,7 +7,14 @@
       class="flex w-full max-w-md md:max-w-lg px-3"
       @submit.prevent="search"
     >
+      <label
+        for="search-bar"
+        class="sr-only"
+      >
+        Search on the DOI, URL, or title of the paper
+      </label>
       <input
+        id="search-bar"
         v-model="query"
         type="search"
         placeholder="Enter a DOI, URL, or title"
