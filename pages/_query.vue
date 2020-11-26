@@ -1,11 +1,6 @@
 <template>
-  <nuxt-child
-    v-if="$route.name === 'query-pdf'"
-    :url="url"
-    :error="pdfNotFound"
-  />
   <div
-    v-else-if="metadata"
+    v-if="metadata"
     class="flex h-full"
   >
     <div class="flex flex-col h-full w-full md:w-1/2 p-4 sm:p-5 overflow-auto">
