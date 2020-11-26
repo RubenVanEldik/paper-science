@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="value"
+    v-if="value || $slots.default"
     class="mt-3"
     :class="{ flex: !multiLine }"
   >
@@ -9,9 +9,11 @@
       v-text="label"
     />
     <div
+      v-if="value"
       class="text-gray-700"
       v-text="value"
     />
+    <slot v-else />
   </div>
 </template>
 
