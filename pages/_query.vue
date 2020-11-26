@@ -116,7 +116,7 @@ export default {
       if (json.metadata?.doi) {
         this.metadata = json.metadata
 
-        const pdfUrl = [json.url, ...json.metadata.url].find(url => url.endsWith('.pdf'))
+        const pdfUrl = [json.url, ...json.metadata.url].find(url => url?.endsWith('.pdf'))
 
         if (pdfUrl) {
           this.url = pdfUrl
