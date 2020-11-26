@@ -48,11 +48,12 @@
           multi-line
         />
       </div>
-      <div class="h-10">
-        <button
-          :disabled="!url"
-          class="block w-full py-2 px-4 md:hidden rounded bg-green-600 text-white text-center disabled:opacity-50"
-          @click="() => $router.push(`${$route.path}/pdf`)"
+      <div class="fixed bottom-0 left-0 w-full px-2 pb-2">
+        <a
+          target="_blank"
+          :href="url"
+          :class="{ 'opacity-50': !url }"
+          class="block h-8 w-full md:hidden rounded bg-green-600 text-white text-center leading-loose"
           v-text="url ? 'Open PDF' : pdfNotFound ? 'There is no PDF for this article' : 'Searching for PDF'"
         />
       </div>
