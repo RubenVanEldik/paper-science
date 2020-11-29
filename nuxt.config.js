@@ -2,10 +2,12 @@ export default {
   ssr: false,
   target: 'static',
   components: true,
-  publicRuntimeConfig: {
-    NETLIFY_URL: process.env.NETLIFY_URL,
-    API_URL: process.env.API_URL
-  },
+  publicRuntimeConfig: [
+    'NODE_ENV',
+    'NETLIFY_URL',
+    'SIMPLE_ANALYTICS_URL',
+    'API_URL'
+  ].reduce((obj, key) => ({ ...obj, [key]: process.env[key] }), {}),
   head: {
     title: 'Paper',
     link: [
