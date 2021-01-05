@@ -23,10 +23,8 @@ export default {
   plugins: [
     { src: '~/plugins/simpleAnalytics' }
   ],
-  buildModules: [
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss'
-  ],
+  buildModules: ['@nuxtjs/tailwindcss']
+    .concat(process.env.NODE_ENV !== 'production' ? '@nuxtjs/eslint-module' : []),
   modules: [
     '@nuxtjs/pwa'
   ],
