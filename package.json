@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/tailwindcss": "^3.4.2",
     "core-js": "^3.6.5",
     "dayjs": "^1.9.6",
     "encoding": "^0.1.13",
@@ -29,7 +30,6 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
     "@nuxtjs/eslint-module": "^2.0.0",
-    "@nuxtjs/tailwindcss": "^3.1.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.10.0",
     "eslint-plugin-nuxt": "^1.0.0",
