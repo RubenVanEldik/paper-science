@@ -7,6 +7,11 @@ export default {
     'SIMPLE_ANALYTICS_URL',
     'API_URL'
   ].reduce((obj, key) => ({ ...obj, [key]: process.env[key] }), {}),
+  loadingIndicator: {
+    name: 'pulse',
+    color: '#047857',
+    background: '#F3F4F6'
+  },
   head: {
     title: 'Paper',
     link: [
