@@ -105,11 +105,8 @@ export default {
       return dateString ? dayjs(dateString).format('D MMMM YYYY') : null
     },
     async fetchMetadata (query) {
-      const startTime = new Date()
       const response = await fetch(`${this.$config.API_URL}/find?id=${query}`)
       const json = await response.json()
-      const duration = new Date() - startTime
-      this.saEvent(`fetch_metadata_${Math.ceil(duration / 200) * 200}`)
 
       if (json.metadata?.doi) {
         this.metadata = json.metadata
@@ -128,11 +125,8 @@ export default {
     },
     async fetchUrl (doi) {
       try {
-        const startTime = new Date()
         const response = await fetch(`${this.$config.NETLIFY_URL || ''}/fetchurl?query=${doi}`)
         const url = await response.text()
-        const duration = new Date() - startTime
-        this.saEvent(`fetch_url_${Math.ceil(duration / 200) * 200}`)
 
         if (response.status === 200 && url) {
           this.url = url
